@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Descanso del Cuidador</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f2f9f2;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #2e7d32;
+    }
+    #timer {
+      font-size: 4em;
+      margin: 30px 0;
+      color: #1b5e20;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #1b5e20;
+    }
+    #mensaje {
+      margin-top: 40px;
+      font-size: 1.2em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tiempo de Descanso del Cuidador</h1>
+  <div id="timer">01:00:00</div>
+  <button onclick="iniciarDescanso()">Iniciar Descanso</button>
+  <div id="mensaje"></div>
+
+  <script>
+    let intervalo;
+
+    function iniciarDescanso() {
+      clearInterval(intervalo);
+      let segundos = 3600;
+
+      intervalo = setInterval(() => {
+        const h = String(Math.floor(segundos / 3600)).padStart(2, '0');
+        const m = String(Math.floor((segundos % 3600) / 60)).padStart(2, '0');
+        const s = String(segundos % 60).padStart(2, '0');
+
+        document.getElementById("timer").textContent = `${h}:${m}:${s}`;
+
+        if (segundos <= 0) {
+          clearInterval(intervalo);
+          document.getElementById("mensaje").textContent = "¡Descanso finalizado! Es hora de volver con energía renovada.";
+        }
+
+        segundos--;
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>

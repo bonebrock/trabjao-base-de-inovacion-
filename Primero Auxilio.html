@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Emergencia - Adulto Mayor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff3e0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #b71c1c;
+      font-size: 2.5em;
+    }
+
+    .btn-sos, .btn-llamar {
+      background-color: #d32f2f;
+      color: white;
+      font-size: 1.5em;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 12px;
+      margin: 20px 10px;
+      cursor: pointer;
+    }
+
+    .btn-sos:hover, .btn-llamar:hover {
+      background-color: #b71c1c;
+    }
+
+    .instrucciones {
+      background-color: #fff8f5;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: left;
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.4em;
+      color: #333;
+    }
+
+    .instrucciones h2 {
+      color: #e65100;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚨 Ayuda de Primeros Auxilios</h1>
+  <button class="btn-sos" onclick="mostrarInstrucciones()">¡Emergencia!</button>
+
+  <!-- BOTÓN PARA LLAMAR -->
+  <a href="tel:112">
+    <button class="btn-llamar">📞 Llamar al 112</button>
+  </a>
+
+  <div id="instrucciones" class="instrucciones" style="display:none;">
+    <h2>Pasos Básicos</h2>
+    <ul>
+      <li><strong>Llama a emergencias:</strong> 112 o 911.</li>
+      <li>Verifica si el adulto mayor <strong>responde o respira.</strong></li>
+      <li>Si no respira, inicia <strong>RCP</strong> (ver abajo).</li>
+      <li>Si hay sangrado, <strong>presiona con un paño limpio</strong>.</li>
+      <li><strong>No lo muevas</strong> si crees que hay fractura o golpe fuerte.</li>
+    </ul>
+
+    <h2>Cómo hacer RCP (si no respira)</h2>
+    <ul>
+      <li>Coloca al adulto mayor boca arriba.</li>
+      <li>Haz <strong>30 compresiones en el pecho</strong>, fuerte y rápido.</li>
+      <li>Después, <strong>2 respiraciones boca a boca</strong>.</li>
+      <li>Repite hasta que llegue ayuda o recupere la respiración.</li>
+    </ul>
+
+    <h2>Otros consejos</h2>
+    <ul>
+      <li>Habla con calma, tranquiliza al adulto mayor si está consciente.</li>
+      <li>Permanece con la persona en todo momento.</li>
+      <li>Ten a mano un botiquín y un listado de sus medicamentos si los tiene.</li>
+    </ul>
+  </div>
+
+  <!-- Sonido de emergencia -->
+  <audio id="alerta" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+
+  <script>
+    function mostrarInstrucciones() {
+      document.getElementById("instrucciones").style.display = "block";
+      document.getElementById("alerta").play();
+    }
+  </script>
+
+</body>
+</html>
+

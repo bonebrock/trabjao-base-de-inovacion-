@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recordatorio de Pastillas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f0f8ff;
+    }
+    h1 {
+      color: #2e6da4;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    th {
+      background-color: #d9edf7;
+    }
+    .alarm {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Horario de Pastillas</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Medicamento</th>
+        <th>Hora</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-horarios">
+      <!-- Se llenará automáticamente -->
+    </tbody>
+  </table>
+
+  <audio id="alarma-sonido" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3" preload="auto"></audio>
+
+  <script>
+    // Lista de horarios: ["Medicamento", "HH:MM"]
+    const horarios = [
+      ["Pastilla A", "08:00"],
+      ["Pastilla B", "13:00"],
+      ["Pastilla C", "18:30"],
+      ["Pastilla D", "21:00"]
+    ];
+
+    // Mostrar en la tabla
+    const tabla = document.getElementById('tabla-horarios');
+    horarios.forEach(([medicamento, hora]) => {
+      const fila = document.createElement('tr');
+      fila.innerHTML = `<td>${medicamento}</td><td>${hora}</td>`;
+      tabla.appendChild(fila);
+    });
+
+    // Verifica cada minuto si coincide la hora
+    function verificarAlarma() {
+      const ahora = new Date();
+      const horaActual = ahora.toTimeString().slice(0, 5); // formato "HH:MM"
+
+      horarios.forEach(([medicamento, hora]) => {
+        if (hora === horaActual) {
+          const sonido = document.getElementById('alarma-sonido');
+          sonido.play();
+          alert(`¡Es hora de tomar: ${medicamento}!`);
+        }
+      });
+    }
+
+    // Verificar al cargar y luego cada minuto
+    verificarAlarma();
+    setInterval(verificarAlarma, 60000); // cada 60 segundos
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SOS Emergencia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      text-align: center;
+      padding: 50px;
+      transition: background-color 0.5s ease;
+    }
+
+    h1 {
+      color: #c62828;
+    }
+
+    #sosBtn {
+      padding: 20px 40px;
+      font-size: 1.5em;
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+
+    #sosBtn:hover {
+      background-color: #b71c1c;
+    }
+
+    #mensaje {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #b71c1c;
+      font-weight: bold;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Botón de Emergencia</h1>
+  <button id="sosBtn" onclick="activarEmergencia()">¡SOS!</button>
+  <div id="mensaje"></div>
+
+  <!-- Audio de emergencia -->
+  <audio id="alarma" src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" preload="auto"></audio>
+
+  <script>
+    function activarEmergencia() {
+      const alarma = document.getElementById("alarma");
+      alarma.play();
+
+      document.body.style.backgroundColor = "#ffe5e5";
+      document.getElementById("mensaje").textContent = "¡Emergencia detectada! Se necesita ayuda inmediata y primeros auxilios.";
+    }
+  </script>
+
+</body>
+</html>
